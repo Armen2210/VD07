@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="p-5 mb-4 bg-white rounded-3 shadow-sm">
+    <div class="container-fluid py-3">
+        <h1 class="display-5 fw-bold">Добро пожаловать!</h1>
+        <p class="col-md-8 fs-5">
+            Это простое приложение на Flask с регистрацией, авторизацией
+            и редактированием профиля.
+        </p>
+        {% if not current_user.is_authenticated %}
+            <a href="{{ url_for('register') }}" class="btn btn-primary btn-lg me-2">Регистрация</a>
+            <a href="{{ url_for('login') }}" class="btn btn-outline-secondary btn-lg">Вход</a>
+        {% else %}
+            <a href="{{ url_for('account') }}" class="btn btn-primary btn-lg">Перейти в аккаунт</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
